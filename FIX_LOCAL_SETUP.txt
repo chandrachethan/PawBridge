@@ -1,0 +1,13 @@
+PAWBRIDGE LOCAL SETUP FIX
+
+The error you saw was because your virtual environment used Python 3.15 and pip tried to compile PyYAML. The compiler error stopped dependency installation, so uvicorn was not installed either.
+
+Fix:
+1. Install Python 3.12 from https://www.python.org/downloads/release/python-31210/
+2. During installation, enable Add python.exe to PATH.
+3. Close and reopen File Explorer/Command Prompt.
+4. Double-click start.bat. It will recreate backend\venv with Python 3.12 if the existing environment uses another version.
+
+We also changed backend/requirements.txt from uvicorn[standard] to plain uvicorn. PawBridge does not use the optional PyYAML/C extensions.
+
+Do not share passwords, .env files, or secret keys in GitHub.
